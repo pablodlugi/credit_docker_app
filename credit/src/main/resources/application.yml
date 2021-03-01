@@ -1,0 +1,12 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/credit?useSSL=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Europe/Warsaw&autoReconnect=true&characterEncoding=UTF-8&useUnicode=yes
+    username: root
+    password: polska13
+  jpa:
+    hibernate:
+      ddl-auto: update
+endpoints:
+  prduct: http://localhost:8087/api/products
+  customer: http://localhost:8088/api/customers
+
