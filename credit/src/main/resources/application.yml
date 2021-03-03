@@ -1,12 +1,12 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/credit?useSSL=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Europe/Warsaw&autoReconnect=true&characterEncoding=UTF-8&useUnicode=yes
-    username: root
-    password: polska13
+    url: jdbc:mysql://database:3306/credit?useSSL=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Europe/Warsaw&autoReconnect=true&characterEncoding=UTF-8&useUnicode=yes
+    username: user
+    password: user
   jpa:
     hibernate:
       ddl-auto: update
 endpoints:
-  prduct: http://localhost:8087/api/products
+  product: http://localhost:8087/api/products
   customer: http://localhost:8088/api/customers
 

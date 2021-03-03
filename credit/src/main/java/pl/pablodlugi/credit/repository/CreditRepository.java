@@ -16,8 +16,9 @@ public class CreditRepository {
 
     private final RowMapper<Credit> creditRowMapper = ((resultSet, i) -> new Credit(
             resultSet.getLong("id"),
-            resultSet.getString("credit_number"),
-            resultSet.getString("credit_name")
+            resultSet.getString("credit_name"),
+            resultSet.getString("credit_number")
+
     ));
 
     public void save(Credit credit) {

@@ -5,12 +5,12 @@
     <groupId>com.pablodlugi</groupId>
     <artifactId>credit</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>SpringBootCredit</name>
+    <name>credit_docker_app</name>
     <description>Demo project for Spring Boot</description>
     <packaging>pom</packaging>
     <modules>
         <module>product</module>
-        <module>client</module>
+        <module>customer</module>
         <module>credit</module>
         <module>api</module>
     </modules>

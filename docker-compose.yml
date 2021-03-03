@@ -1,0 +1,50 @@
+version: '3.1'
+
+services:
+  database:
+    image: mysql
+    volumes:
+    - ./init_db:/docker-entrypoint-initdb.d
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+    -  3306:3306
+    networks:
+      - spring-network
+  credit:
+    depends_on:
+      - database
+    build: ./credit_docker
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://database/credit?useSSL=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Europe/Warsaw&autoReconnect=true&characterEncoding=UTF-8&useUnicode=yes
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+      ENDPOINTS_PRODUCT: http://product:8087/api/products
+      ENDPOINTS_CUSTOMER: http://customer:8088/api/customers
+    ports:
+      - "8080:8080"
+    networks:
+      - spring-network
+  product:
+    build: ./product_docker
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://database/product?useSSL=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Europe/Warsaw&autoReconnect=true&characterEncoding=UTF-8&useUnicode=yes
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+    depends_on:
+      - database
+    networks:
+      - spring-network
+  customer:
+    build: ./customer_docker
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://database/customer?useSSL=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Europe/Warsaw&autoReconnect=true&characterEncoding=UTF-8&useUnicode=yes
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+    depends_on:
+    - database
+    networks:
+      - spring-network
+networks:
+  spring-network:
+    driver: bridge

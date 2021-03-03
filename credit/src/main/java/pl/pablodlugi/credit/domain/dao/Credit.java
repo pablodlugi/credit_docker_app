@@ -19,8 +19,4 @@ public class Credit {
     private String creditName;
     private String creditNumber;
 
-    public Credit(String creditName, String creditNumber) {
-        this.creditName = creditName;
-        this.creditNumber = creditNumber;
-    }
 }
